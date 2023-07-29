@@ -7,8 +7,9 @@ webpack学习
 所以在package.json中的script 中添加配置，可以更加便捷的启动webpack打包，以及其他命令。
 
 # watch
-1.在npm指令后加 --watch
-2.在webpacl.config中进行配置
+1.在npm指令后加 --watch  
+2.在webpacl.config中进行配置  
+```
 module.export = {
   // 默认false，也就是不开启
   watch: true,
@@ -22,4 +23,16 @@ module.export = {
     poll: 1000
   }
 }
+```
 缺点：需要手动刷新页面来更新。
+
+# webpack热更新
+Webpack Compile: 将 JS 编译成 Bundle  
+HMR Server: 将热更新的⽂件输出给 HMR Rumtime  
+Bundle server: 提供⽂件在浏览器的访问  
+HMR Rumtime: 会被注⼊到浏览器，更新⽂件的变化  
+bundle.js: 构建输出的⽂件  
+![热更新流程图](imgs/hot_refresh.png)
+热更新分为启动阶段和更新阶段  
+启动阶段：在文件系统中将初始代码通过Webpack Compile进行编译和打包，然后传输给Bundle server，Bundle server会以一个服务的形式让浏览器可以访问。
+更新阶段：还是通过Webpack Compile进行编译和打包，然后发送给HMR Server，HMR Server收到后通知客户端的HMR Rumtime，HMR Rumtime就会更新我们的代码。

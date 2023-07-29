@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -36,11 +37,18 @@ module.exports = {
       }
     ]
   },
-  mode: 'production',
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/,
-    aggregateTimeout: 300,
-    poll: 1000
-  }
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    static: './dist',
+    hot: true
+  },
+  mode: 'development',
+  // watch: true,
+  // watchOptions: {
+  //   ignored: /node_modules/,
+  //   aggregateTimeout: 300,
+  //   poll: 1000
+  // }
 }
