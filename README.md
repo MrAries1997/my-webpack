@@ -36,3 +36,13 @@ bundle.js: 构建输出的⽂件
 热更新分为启动阶段和更新阶段  
 启动阶段：在文件系统中将初始代码通过Webpack Compile进行编译和打包，然后传输给Bundle server，Bundle server会以一个服务的形式让浏览器可以访问。
 更新阶段：还是通过Webpack Compile进行编译和打包，然后发送给HMR Server，HMR Server收到后通知客户端的HMR Rumtime，HMR Rumtime就会更新我们的代码。
+
+# 文件指纹
+什么是文件指纹：打包后文件的后缀部分，通常可以用来做版本管理，且发布新版本的时候未改动文件的缓存依旧有效，可以当做一种性能优化  
+文件指纹的种类  
+1.Hash：和整个项⽬的构建相关，只要项⽬⽂件有修改，整个项⽬构建的 hash 值就会更改。  
+2.Chunkhash：和 webpack 打包的 chunk 有关，不同的 entry 会⽣成不同的 chunkhash 值  
+3.Contenthash：根据⽂件内 容来定义 hash ，⽂件内容不变，则 contenthash 不变  
+js适合用chunkhash，对应entry，entry的某个js有改动，对应的chunkhash就会改变；  
+css适合配合MiniCssExtractPlugin使用contenthash，  
+图片和字体的hash因为默认是MD5生成的，对文件内容进行hash，所以只要内容不变hash就不变，因此使用hash做指纹即可。
