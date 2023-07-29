@@ -46,3 +46,8 @@ bundle.js: 构建输出的⽂件
 js适合用chunkhash，对应entry，entry的某个js有改动，对应的chunkhash就会改变；  
 css适合配合MiniCssExtractPlugin使用contenthash，  
 图片和字体的hash因为默认是MD5生成的，对文件内容进行hash，所以只要内容不变hash就不变，因此使用hash做指纹即可。
+
+# html、css、js代码压缩
+js：使用[terser-webpack-plugin](https://www.webpackjs.com/plugins/terser-webpack-plugin/#root)  
+css：使用[css-minimizer-webpack-plugin](https://www.webpackjs.com/plugins/css-minimizer-webpack-plugin/#root)  
+html：使用[html-webpack-plugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)  

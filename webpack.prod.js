@@ -1,5 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -45,9 +48,30 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ],
+  },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name]_[contenthash:8].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src/index.html'),
+      filename: 'index.html',
+      chunks: ['index','index2'],
+      inject: true,
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: false,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false
+      }
     })
   ],
   mode: 'production',
