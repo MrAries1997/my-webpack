@@ -36,5 +36,11 @@ module.exports = {
       }
     ]
   },
-  mode: 'production'
+  mode: 'production',
+  watch: true,
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 300,
+    poll: 1000
+  }
 }
