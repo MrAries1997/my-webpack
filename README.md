@@ -7,6 +7,8 @@ webpack学习
 所以在package.json中的script 中添加配置，可以更加便捷的启动webpack打包，以及其他命令。
 
 # watch
+1.在npm指令后加 --watch
+2.在webpacl.config中进行配置
 module.export = {
   // 默认false，也就是不开启
   watch: true,
@@ -20,3 +22,4 @@ module.export = {
     poll: 1000
   }
 }
+缺点：需要手动刷新页面来更新。
