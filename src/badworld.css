@@ -3,4 +3,10 @@
   width: 40px;
   background: yellow;
   display: flex;
+  margin: -10px .5vh;
+  padding: 5vmin 9.5px 1px;
+  border: 3px solid black;
+  border-bottom-width: 1px;
+  font-size: 14px;
+  line-height: 20px;
 }
