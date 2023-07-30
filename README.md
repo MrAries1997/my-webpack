@@ -51,3 +51,16 @@ css适合配合MiniCssExtractPlugin使用contenthash，
 js：使用[terser-webpack-plugin](https://www.webpackjs.com/plugins/terser-webpack-plugin/#root)  
 css：使用[css-minimizer-webpack-plugin](https://www.webpackjs.com/plugins/css-minimizer-webpack-plugin/#root)  
 html：使用[html-webpack-plugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)  
+
+# PostCss插件autoprefix自动补齐CSS3前缀
+[PostCSS](https://www.webpackjs.com/loaders/postcss-loader/)是一个非常强大的CSS后处理器，它允许你在构建过程中对CSS进行转换和优化。  
+使用PostCSS的Autoprefixer插件，基于Can I Use数据库中的数据，根据你所设置的浏览器兼容性配置，自动为CSS规则添加所需的前缀，以确保在不同的浏览器中正确地呈现样式。
+例如：
+```
+.box {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+```

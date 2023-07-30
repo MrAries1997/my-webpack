@@ -24,7 +24,8 @@ module.exports = {
         test: /.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader'
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -32,7 +33,8 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'less-loader'
+          'less-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -63,7 +65,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/index.html'),
       filename: 'index.html',
-      chunks: ['index','index2'],
+      chunks: ['index', 'index2'],
       inject: true,
       minify: {
         html5: true,
