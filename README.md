@@ -69,3 +69,28 @@ html：使用[html-webpack-plugin](https://www.webpackjs.com/plugins/html-webpac
 [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport/blob/master/README_CN.md#postcss-px-to-viewport)  
 将px单位转换为视口单位的 (vw, vh, vmin, vmax) 的 PostCSS 插件。  
 如果你的样式需要做根据视口大小来调整宽度，这个脚本可以将你CSS中的px单位转化为vw，1vw等于1/100视口宽度。  
+
+# 静态资源内联
+静态资源内联，将CSS，JS，图片等静态资源，内联到html。可以减少文件请求数量，优化加载速度。  
+使用raw-loader进行html和js的内联  
+html：  
+```
+<%= require('raw-loader!./meta.html').default %>
+```
+js：  
+```
+<script type="text/javascript"><%= require('raw-loader!babel-loader!../../node_modules/postcss-px-to-viewport').default %></script>
+```
+css：  
+```
+const HtmlInlineCssPlugin = require('html-inline-css-webpack-plugin').default;
+plugins: [ new HtmlInlineCssPlugin() ]
+// 或者使用style-loader
+{
+  loader: 'style-loader',
+  options: {
+    insertAt: 'top', // 样式插入到 <head>
+    singleton: true, //将所有的style标签合并成一个
+  }
+},
+```
