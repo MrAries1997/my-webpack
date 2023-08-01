@@ -94,3 +94,15 @@ plugins: [ new HtmlInlineCssPlugin() ]
   }
 },
 ```
+
+# Source-map
+通过 source map 定位到源代码。  
+```
+devtool: 'source-map'
+```
+eval: 使⽤eval包裹模块代码  
+source map: 产⽣.map⽂件  
+cheap: 不包含列信息  
+inline: 将.map作为DataURI嵌⼊，不单独⽣成.map⽂件  
+module:包含loader的sourcemap  
+![Source map 类型](imgs/source_map_type.png)
